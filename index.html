@@ -76,7 +76,7 @@ body{background:var(--ivory);color:var(--text);font-family:'Cormorant Garamond',
 .verse-ref{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--yellow-gold);opacity:0.65;font-family:'Lato',sans-serif;font-weight:300}
 
 /* ─── GENERIC SECTION ─── */
-.sec{padding:72px 24px;max-width:700px;margin:0 auto}
+.sec{padding:64px 16px;max-width:700px;margin:0 auto;text-align:center}
 .sec-orn{text-align:center;color:var(--green-leaf);font-size:15px;letter-spacing:8px;margin-bottom:10px;opacity:0.45}
 .sec-lbl{text-align:center;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--muted-light);margin-bottom:38px;font-family:'Lato',sans-serif;font-weight:300}
 .divider{width:100%;height:0.5px;background:var(--beige)}
@@ -99,8 +99,8 @@ body{background:var(--ivory);color:var(--text);font-family:'Cormorant Garamond',
 .tl-dot{width:12px;height:12px;border:1.5px solid var(--yellow-gold);border-radius:50%;background:var(--ivory)}
 .tl-time{font-family:'Playfair Display',serif;font-size:22px;color:var(--yellow-gold);line-height:1}
 .tl-time small{display:block;font-family:'Lato',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted-light);margin-top:4px;font-weight:300}
-.tl-event{font-family:'Playfair Display',serif;font-size:17px;color:var(--text);margin-bottom:4px}
-.tl-loc{font-size:13px;color:var(--muted);line-height:1.65}
+.tl-event{font-family:'Playfair Display',serif;font-size:17px;color:var(--text);margin-bottom:4px;text-align:center}
+.tl-loc{font-size:14px;color:var(--muted);line-height:1.75;text-align:center}
 
 /* event icon badge */
 .ev-badge{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--yellow-cream);border:1px solid var(--beige);margin-bottom:10px}
@@ -163,20 +163,50 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
 }
 
 /* ── MOBILE-FIRST ── */
-.sec{padding:52px 20px;max-width:700px;margin:0 auto}
+*{-webkit-tap-highlight-color:transparent}
+.sec{padding:52px 16px;max-width:700px;margin:0 auto;text-align:center}
 .noivos-grid{grid-template-columns:1fr}
 .locais-grid{grid-template-columns:1fr}
-.timeline::before{left:20px}
-.tl-item{grid-template-columns:28px 1fr}
-.tl-time{display:none}
 .hero-border::before{top:14px;left:14px;right:14px;bottom:14px}
 .hero-border::after{top:22px;left:22px;right:22px;bottom:22px}
+
+/* ── TIMELINE MOBILE: single column, fully centred ── */
+.timeline{position:relative;padding:0}
+.timeline::before{display:none}
+.tl-item{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;margin-bottom:36px;gap:8px
+}
+.tl-item > div:first-child{display:flex;flex-direction:column;align-items:center}
+.tl-time{display:block;text-align:center}
+.tl-dot-col{display:flex;justify-content:center}
+.tl-content-mobile{text-align:center;padding:0}
+.tl-event{font-family:'Playfair Display',serif;font-size:18px;color:var(--text);margin-bottom:4px;text-align:center}
+.tl-loc{font-size:14px;color:var(--muted);line-height:1.75;text-align:center}
+.tl-day-sep span{font-size:9px}
+.ev-badge{margin:0 auto 6px}
+
+/* noivos centred */
+.noivo-card{text-align:center}
+.noivo-pais{text-align:center}
+
+/* locais centred */
+.local-card{align-items:center;text-align:center}
+.local-addr{text-align:center}
+
+/* rsvp */
+.rsvp-sub{text-align:center}
+.verse-pt{text-align:center}
+.invite-intro-text{text-align:center}
+.gifts-sub{text-align:center}
+
 @media(min-width:600px){
   .noivos-grid{grid-template-columns:1fr 1fr}
   .locais-grid{grid-template-columns:1fr 1fr}
-  .timeline::before{left:50%;transform:translateX(-50%)}
-  .tl-item{grid-template-columns:1fr 48px 1fr}
-  .tl-time{display:block}
+  .timeline::before{display:block;position:absolute;left:50%;top:0;bottom:0;width:0.5px;background:var(--beige);transform:translateX(-50%)}
+  .tl-item{display:grid;grid-template-columns:1fr 48px 1fr;flex-direction:unset;align-items:start;gap:0;text-align:unset;margin-bottom:46px}
+  .tl-item > div:first-child{display:block}
+  .tl-time{text-align:right}
   .hero-border::before{top:28px;left:28px;right:28px;bottom:28px}
   .hero-border::after{top:40px;left:40px;right:40px;bottom:40px}
 }
@@ -238,6 +268,36 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
 .btn-gift:hover{background:var(--yellow-gold);color:#fff;transform:translateY(-2px)}
 .btn-gift svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
+
+/* ── MOBILE TYPOGRAPHY ── */
+@media(max-width:599px){
+  .bismillah{font-size:clamp(16px,5vw,24px);line-height:1.6}
+  .hero-tag{font-size:9px;letter-spacing:4px}
+  .hero-date{font-size:10px;letter-spacing:4px}
+  .verse-arabic{font-size:clamp(18px,5vw,24px);line-height:2.2}
+  .verse-pt{font-size:16px;line-height:2.0}
+  .noivo-name{font-size:clamp(20px,5vw,26px)}
+  .noivo-pais{font-size:14px;line-height:2.0}
+  .noivo-dua{font-size:13px;line-height:1.8}
+  .tl-event{font-size:17px}
+  .tl-loc{font-size:13px;line-height:1.8}
+  .local-name{font-size:15px}
+  .local-addr{font-size:13px;line-height:1.8}
+  .invite-intro-title{font-size:clamp(20px,6vw,28px);line-height:1.5}
+  .invite-intro-text{font-size:15px;line-height:2.1}
+  .rsvp-title{font-size:clamp(26px,7vw,38px)}
+  .rsvp-sub{font-size:15px;line-height:1.9}
+  .gifts-title{font-size:clamp(20px,6vw,28px)}
+  .gifts-sub{font-size:14px;line-height:1.9}
+  .modal-text{font-size:15px;line-height:2.0}
+  .decl-name{font-size:20px}
+  .cd-num{font-size:clamp(36px,10vw,56px)}
+  .sec-lbl{font-size:9px;letter-spacing:4px}
+  .footer-names{font-size:20px}
+  .btn-wa{font-size:16px;padding:14px 32px}
+  .btn-gift{font-size:14px;padding:12px 28px}
+  .tl-day-badge{font-size:9px}
+}
 </style>
 </head>
 <body>
@@ -368,11 +428,11 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
     <div class="modal-who">Mussagy</div>
     <div class="modal-divider"></div>
     <div class="modal-text">
-      Hoje, diante de Allah (SWT), eu te escolho como minha esposa sob o laço sagrado do nosso Nikah. Prometo te tratar com a paciência e a bondade que a nossa fé nos ensina.
+      Em breve, diante de Allah (SWT), escolher-te-ei como minha esposa, sob o laço sagrado do nosso Nikah. Prometo tratar-te com a paciência e a bondade que a nossa fé nos ensina.
       <br><br>
-      Escolho te amar na calma e na tempestade, sendo o teu porto seguro e o teu bem-estar. Encontrei em ti uma mulher sábia e temente a Allah, alguém com quem posso partilhar todos os meus planos.
+      Escolho amar-te na calma e na tempestade, sendo o teu porto seguro e zelando pelo teu bem-estar. Em ti encontrei uma mulher sábia e temente a Allah, alguém com quem desejo partilhar todos os meus planos.
       <br><br>
-      Caminharemos juntos na fé, sempre buscando o agrado do Criador. Que o nosso amor seja um reflexo da Sua misericórdia: eterno e cheio de luz até o Jannah.
+      Caminharemos juntos na fé, sempre em busca do agrado do Criador. Que o nosso amor seja reflexo da Sua misericórdia — eterno, sereno e cheio de luz, até ao Jannah.
       <br><br>
       Com amor, Mussagy.
     </div>
@@ -390,10 +450,9 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
     <div class="invite-intro-orn">✦ ✦ ✦</div>
     <div class="invite-intro-title">Com a Bênção de Allah (SWT)</div>
     <div class="invite-intro-text">
-      temos a honra de convidá-lo(a) a comemorar esta data especial connosco.<br><br>
-      Venha juntar-se a nós e ajudar-nos a celebrar<br>
-      o nosso enlace matrimonial (Nikah)<br>
-      de acordo com a agenda abaixo:
+      Temos a honra de convidá-lo(a) a celebrar connosco esta data especial.<br><br>
+      Venha juntar-se a nós para comemorar o nosso enlace matrimonial (Nikah),<br>
+      conforme a agenda abaixo:
     </div>
   </div>
 </div>
@@ -417,7 +476,7 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
         <div class="tl-time" style="text-align:right">Maghrib<small>Nikah</small></div>
       </div>
       <div class="tl-dot-col"><div class="tl-dot"></div></div>
-      <div style="padding-left:16px">
+      <div class="tl-content-mobile" style="padding:0">
         <div class="tl-day-badge">28 Ago · Sexta</div>
         <div class="tl-event">Cerimónia Nikah</div>
         <div class="tl-loc">Masjid Umar Faruk R.T.A<br>34 Rua Fernando Pessoa, Maputo</div>
@@ -434,7 +493,7 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
         <div class="tl-time" style="text-align:right">13h00<small>Civil</small></div>
       </div>
       <div class="tl-dot-col"><div class="tl-dot"></div></div>
-      <div style="padding-left:16px">
+      <div class="tl-content-mobile" style="padding:0">
         <div class="tl-day-badge">29 Ago · Sábado</div>
         <div class="tl-event">Casamento Civil</div>
         <div class="tl-loc">Ana Eventos, Maputo</div>
@@ -449,7 +508,7 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
         <div class="tl-time" style="text-align:right">14h15<small>Welcome</small></div>
       </div>
       <div class="tl-dot-col"><div class="tl-dot"></div></div>
-      <div style="padding-left:16px">
+      <div class="tl-content-mobile" style="padding:0">
         <div class="tl-event">Welcome Drinks</div>
         <div class="tl-loc">Ana Eventos, Maputo</div>
       </div>
@@ -463,7 +522,7 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
         <div class="tl-time" style="text-align:right">15h00<small>Entrada</small></div>
       </div>
       <div class="tl-dot-col"><div class="tl-dot"></div></div>
-      <div style="padding-left:16px">
+      <div class="tl-content-mobile" style="padding:0">
         <div class="tl-event">Entrada dos Noivos</div>
         <div class="tl-loc">Salão · Ana Eventos</div>
       </div>
@@ -477,7 +536,7 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
         <div class="tl-time" style="text-align:right">15h30<small>Recepção</small></div>
       </div>
       <div class="tl-dot-col"><div class="tl-dot"></div></div>
-      <div style="padding-left:16px">
+      <div class="tl-content-mobile" style="padding:0">
         <div class="tl-event">Copo d'Água</div>
         <div class="tl-loc">Ana Eventos, Maputo</div>
       </div>
@@ -508,7 +567,7 @@ footer{background:#0d0b04;text-align:center;padding:56px 24px 40px}
       <div class="local-type">Nikah · 28 Ago</div>
       <div class="local-name">Masjid Umar Faruk R.T.A</div>
       <div class="local-addr">34 Rua Fernando Pessoa<br>Maputo</div>
-      <a class="btn-map" href="https://share.google/uUx3xoAvZmLYtQxfyA" target="_blank">
+      <a class="btn-map" href="https://www.google.com/maps/place/Masjid+Umar+Faruk+R.T.A/@-25.9584953,32.5842352,17z/data=!3m1!4b1!4m6!3m5!1s0x1ee69bec1ed67075:0x1447894221202ec!8m2!3d-25.9584953!4d32.5868155!16s%2Fg%2F11q4cg57yz?entry=ttu" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Clique aqui para se dirigir
       </a>
